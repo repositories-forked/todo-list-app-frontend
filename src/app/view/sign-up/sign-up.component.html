@@ -1,4 +1,5 @@
 <div class="container">
+  <img src="assets/sign-up.png" alt="Sign-up">
   <h1>To-do list App</h1>
   <p>
     Welcome newbie! <br>
@@ -24,4 +25,5 @@
       <button [disabled]="!(frm.valid && (password === confirmPassword))" class="sign-up" (click)="createAccount()">Create Account</button>
     </div>
   </form>
+  <small>Already a user? <a routerLink="/sign-in">Sign In</a></small>
 </div>

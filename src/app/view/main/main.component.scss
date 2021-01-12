@@ -1,5 +1,25 @@
 .container{
-  padding: 30px;
+  padding: 10px 30px;
+}
+
+#logo{
+  width: 75px;
+  vertical-align: middle;
+}
+
+h1{
+  a{
+    float: right;
+    font-size: 16px;
+    line-height: 75px;
+    outline: none;
+    text-decoration: none;
+    color: black;
+  }
+
+  a:hover{
+    color: darkblue;
+  }
 }
 
 .section {

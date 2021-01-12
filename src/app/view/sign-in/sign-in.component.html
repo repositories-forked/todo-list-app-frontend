@@ -1,4 +1,5 @@
 <div class="container">
+  <img src="assets/sign-in.png" alt="Sign In">
   <h1>To-do list App</h1>
   <p>
     Welcome to To-do list App. <br>
@@ -9,10 +10,10 @@
     <label for="txt-username">Username</label>
     <input name="txt-username"  #usernameModel="ngModel" [(ngModel)]="username" required minlength="3" pattern="[A-Za-z]+"
             id="txt-username" type="text" placeholder="Enter username">
-    <small [style.color]="'red'" *ngIf="usernameModel.hasError('minlength')">
+    <small [style.color]="'red'" *ngIf="usernameModel.hasError('minlength') && usernameModel.touched">
       Username should be at least 3 letters
     </small>
-    <small [style.color]="'red'" *ngIf="usernameModel.hasError('pattern')">
+    <small [style.color]="'red'" *ngIf="usernameModel.hasError('pattern')  && usernameModel.touched">
       Username can contain only [A-Za-z] letters
     </small>
   </div>
@@ -26,4 +27,5 @@
     <button [disabled]="frm.invalid" class="sign-in">Sign In</button>
   </div>
   </form>
+  <small>New user? <a routerLink="/sign-up">Sign Up</a></small>
 </div>

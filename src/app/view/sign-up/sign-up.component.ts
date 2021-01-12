@@ -20,14 +20,10 @@ export class SignUpComponent implements OnInit, DoCheck {
 
   createAccount(): void {
     this.userService.createAccount(this.username, this.password).subscribe(value => {
-      if (value.status === 201) {
-        this.router.navigateByUrl('/sign-in');
-      } else {
-        console.log('Something crazy');
-      }
+      this.router.navigateByUrl('/sign-in');
     }, error => {
       if (error.status === 400) {
-        console.log('Bad Request');
+        console.log('Bad request');
       } else {
         console.log(error.statusText);
       }
