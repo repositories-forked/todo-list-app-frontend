@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {TaskService} from '../../service/task.service';
+import {Router} from '@angular/router';
+import {Task} from '../../model/task';
 
 @Component({
   selector: 'app-main',
@@ -8,11 +10,18 @@ import {TaskService} from '../../service/task.service';
 })
 export class MainComponent implements OnInit {
 
-  constructor(public taskService: TaskService) {
+  taskList: Array<Task> = [];
+
+  constructor(public taskService: TaskService, private router: Router) {
 
   }
 
   ngOnInit(): void {
+    this.taskService.getAllTasks().subscribe(list => {
+      this.taskList = list;
+    }, error => {
+      this.router.navigateByUrl('/sign-in');
+    });
   }
 
 }

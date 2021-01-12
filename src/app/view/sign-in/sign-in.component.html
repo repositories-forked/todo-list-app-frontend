@@ -4,15 +4,26 @@
     Welcome to To-do list App. <br>
     Please enter your login credentials to sign in.
   </p>
+  <form #frm="ngForm" (ngSubmit)="authenticate()">
   <div class="form-group">
     <label for="txt-username">Username</label>
-    <input id="txt-username" type="text" placeholder="">
+    <input name="txt-username"  #usernameModel="ngModel" [(ngModel)]="username" required minlength="3" pattern="[A-Za-z]+"
+            id="txt-username" type="text" placeholder="Enter username">
+    <small [style.color]="'red'" *ngIf="usernameModel.hasError('minlength')">
+      Username should be at least 3 letters
+    </small>
+    <small [style.color]="'red'" *ngIf="usernameModel.hasError('pattern')">
+      Username can contain only [A-Za-z] letters
+    </small>
   </div>
   <div class="form-group">
     <label for="txt-password">Password</label>
-    <input id="txt-password" type="password" placeholder="">
+    <input name="txt-password" #passwordModel="ngModel" [(ngModel)]="password" required minlength="3"
+           id="txt-password" type="password" placeholder="Enter password">
+    <small [style.color]="'red'" *ngIf="passwordModel.invalid && passwordModel.dirty">Password should be at least 3 letters</small>
   </div>
   <div class="form-group">
-    <button class="sign-in">Sign In</button>
+    <button [disabled]="frm.invalid" class="sign-in">Sign In</button>
   </div>
+  </form>
 </div>

@@ -1,9 +1,9 @@
-<h1>To-do List</h1>
-<section>
-  <ng-container *ngFor="let task of taskService.taskList">
-    <app-task-item *ngIf="!task.completed" [task]="task"></app-task-item>
-  </ng-container>
-  <div class="task lbl-add-task">
+<div class="container"><h1>To-do List</h1>
+  <section>
+    <ng-container *ngFor="let task of taskList">
+      <app-task-item *ngIf="!task.completed" [task]="task"></app-task-item>
+    </ng-container>
+    <div class="task lbl-add-task">
   <span>
     <svg height="13" width="13">
       <path d="M6 6V.5a.5.5 0 0 1 1 0V6h5.5a.5.5 0 1 1 0 1H7v5.5a.5.5 0 1 1-1 0V7H.5a.5.5 0 0 1 0-1H6z"
@@ -11,13 +11,14 @@
       </path>
     </svg>
   </span>
-    Add Task
-  </div>
-</section>
+      Add Task
+    </div>
+  </section>
 
-<h3 class="section">Completed Tasks</h3>
-<section>
-  <ng-container *ngFor="let task of taskService.taskList">
-    <app-task-item *ngIf="task.completed" [task]="task"></app-task-item>
-  </ng-container>
-</section>
+  <h3 class="section">Completed Tasks</h3>
+  <section>
+    <ng-container *ngFor="let task of taskList">
+      <app-task-item *ngIf="task.completed" [task]="task"></app-task-item>
+    </ng-container>
+  </section>
+</div>
