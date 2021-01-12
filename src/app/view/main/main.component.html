@@ -1,7 +1,7 @@
 <div class="container"><h1>To-do List</h1>
   <section>
     <ng-container *ngFor="let task of taskList">
-      <app-task-item *ngIf="task.status === 0? false: true" [task]="task"></app-task-item>
+      <app-task-item *ngIf="task.status === Status.NOT_COMPLETED" [task]="task"></app-task-item>
     </ng-container>
     <div class="task lbl-add-task">
   <span>
@@ -18,7 +18,7 @@
   <h3 class="section">Completed Tasks</h3>
   <section>
     <ng-container *ngFor="let task of taskList">
-      <app-task-item *ngIf="task.status === 0? true: false" [task]="task"></app-task-item>
+      <app-task-item *ngIf="task.status === Status.COMPLETED" [task]="task"></app-task-item>
     </ng-container>
   </section>
 </div>

@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {TaskService} from '../../service/task.service';
 import {Router} from '@angular/router';
 import {Task} from '../../model/task';
+import {Status} from '../../util/status.enum';
+import {HttpErrorResponse} from '@angular/common/http';
 
 @Component({
   selector: 'app-main',
@@ -11,6 +13,7 @@ import {Task} from '../../model/task';
 export class MainComponent implements OnInit {
 
   taskList: Array<Task> = [];
+  Status = Status;
 
   constructor(public taskService: TaskService, private router: Router) {
 
