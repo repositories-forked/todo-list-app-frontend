@@ -1,0 +1,27 @@
+<div class="container">
+  <h1>To-do list App</h1>
+  <p>
+    Welcome newbie! <br>
+    Please enter following details to create a new account.
+  </p>
+  <form #frm="ngForm">
+    <div class="form-group">
+      <label for="txt-username">Username</label>
+      <input name="txt-username" required [minlength]="3" pattern="[A-Za-z]+" [(ngModel)]="username" id="txt-username" type="text"
+             placeholder="Enter username">
+    </div>
+    <div class="form-group">
+      <label for="txt-password">Password</label>
+      <input name="txt-password" required [minlength]="6" [(ngModel)]="password" id="txt-password" type="password" placeholder="Enter password">
+    </div>
+    <div class="form-group">
+      <label for="txt-confirm-password">Confirm Password</label>
+      <input name="txt-confirm-password" required [minlength]="6" [(ngModel)]="confirmPassword" id="txt-confirm-password" type="password"
+             placeholder="Enter password again">
+      <small [style.color]="'red'" *ngIf="password.length > 0 && confirmPassword.length > 0 && password !== confirmPassword">Mismatched Password</small>
+    </div>
+    <div class="form-group">
+      <button [disabled]="!(frm.valid && (password === confirmPassword))" class="sign-up" (click)="createAccount()">Create Account</button>
+    </div>
+  </form>
+</div>

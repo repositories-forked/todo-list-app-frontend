@@ -1,0 +1,56 @@
+:host{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container{
+  text-align: center;
+  border: 1px solid lightgray;
+  border-radius: 10px;
+  padding: 30px;
+
+  button{
+    padding: 5px;
+    width: 50%;
+    cursor: pointer;
+    color: white;
+    border-style: none;
+    border-radius: 5px;
+
+    &.sign-up{
+      padding: 10px;
+      margin-top: 10px;
+      background-color: dodgerblue;
+    }
+
+    &.sign-up:disabled{
+      background-color: lightgray;
+      cursor: default;
+    }
+  }
+}
+
+.form-group{
+  padding: 5px;
+
+  label,
+  input{
+    display: block;
+    width: 100%;
+    padding: 2px;
+    margin: 2px;
+  }
+
+  input{
+    padding: 5px;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+  }
+
+  input.ng-invalid.ng-dirty{
+    border: 1px solid red;
+    outline: none;
+  }
+}
