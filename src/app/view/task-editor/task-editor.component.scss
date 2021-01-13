@@ -1,0 +1,41 @@
+input{
+  display: block;
+  width: 100%;
+  border: 1px solid lightgray;
+  margin-bottom: 10px;
+  padding: 20px 10px;
+  outline: none;
+  border-radius: 5px;
+
+  &:focus{
+    border-color: gray;
+  }
+}
+
+.container{
+  padding: 10px;
+}
+
+button{
+  padding: 10px;
+  background-color: #b11c1c;
+  color: white;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  margin-right: 20px;
+
+  &:disabled{
+    background-color: #e09191;
+  }
+}
+
+button,
+span{
+  font-size: 14px;
+  cursor: pointer;
+}
+
+span:hover{
+  text-decoration: underline;
+}

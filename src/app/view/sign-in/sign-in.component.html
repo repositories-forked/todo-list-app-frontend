@@ -8,7 +8,7 @@
   <form #frm="ngForm" (ngSubmit)="authenticate()">
   <div class="form-group">
     <label for="txt-username">Username</label>
-    <input name="txt-username"  #usernameModel="ngModel" [(ngModel)]="username" required minlength="3" pattern="[A-Za-z]+"
+    <input #txtUsername name="txt-username"  #usernameModel="ngModel" [(ngModel)]="username" required minlength="3" pattern="[A-Za-z]+"
             id="txt-username" type="text" placeholder="Enter username">
     <small [style.color]="'red'" *ngIf="usernameModel.hasError('minlength') && usernameModel.touched">
       Username should be at least 3 letters

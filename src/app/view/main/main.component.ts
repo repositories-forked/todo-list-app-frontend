@@ -27,4 +27,8 @@ export class MainComponent implements OnInit {
     });
   }
 
+  signOut(): void {
+    sessionStorage.removeItem('token');
+    this.router.navigateByUrl('/welcome');
+  }
 }

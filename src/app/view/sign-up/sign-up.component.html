@@ -8,8 +8,9 @@
   <form #frm="ngForm">
     <div class="form-group">
       <label for="txt-username">Username</label>
-      <input name="txt-username" required [minlength]="3" pattern="[A-Za-z]+" [(ngModel)]="username" id="txt-username" type="text"
+      <input (input)="findUser()" #txtUsername name="txt-username" required [minlength]="3" pattern="[A-Za-z]+" [(ngModel)]="username" id="txt-username" type="text"
              placeholder="Enter username">
+      <small [style.color]="'red'" *ngIf="userExists">Username is already taken</small>
     </div>
     <div class="form-group">
       <label for="txt-password">Password</label>
@@ -22,7 +23,7 @@
       <small [style.color]="'red'" *ngIf="password.length > 0 && confirmPassword.length > 0 && password !== confirmPassword">Mismatched Password</small>
     </div>
     <div class="form-group">
-      <button [disabled]="!(frm.valid && (password === confirmPassword))" class="sign-up" (click)="createAccount()">Create Account</button>
+      <button [disabled]="!(frm.valid && (password === confirmPassword) && !userExists)" class="sign-up" (click)="createAccount()">Create Account</button>
     </div>
   </form>
   <small>Already a user? <a routerLink="/sign-in">Sign In</a></small>

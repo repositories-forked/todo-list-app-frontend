@@ -1,6 +1,7 @@
-import {Component, DoCheck, OnInit} from '@angular/core';
+import {Component, DoCheck, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {UserService} from '../../service/user.service';
 import {Router} from '@angular/router';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-sign-up',
@@ -11,8 +12,12 @@ export class SignUpComponent implements OnInit, DoCheck {
   username = '';
   password = '';
   confirmPassword = '';
+  @ViewChild('txtUsername')
+  txtUsername!: ElementRef;
+  userExists = false;
 
-  constructor(private userService: UserService, private router: Router) {
+  constructor(private userService: UserService, private router: Router,
+              private snackBar: MatSnackBar) {
   }
 
   ngOnInit(): void {
@@ -23,9 +28,14 @@ export class SignUpComponent implements OnInit, DoCheck {
       this.router.navigateByUrl('/sign-in');
     }, error => {
       if (error.status === 400) {
-        console.log('Bad request');
+        this.snackBar.open('Invalid details!', 'Dismiss', {
+          duration: 2000
+        });
+        (this.txtUsername.nativeElement as HTMLInputElement).select();
       } else {
-        console.log(error.statusText);
+        this.snackBar.open('500 Something went wrong!', 'Dismiss', {
+          duration: 2000
+        });
       }
     });
   }
@@ -39,5 +49,13 @@ export class SignUpComponent implements OnInit, DoCheck {
 
   ngDoCheck(): void {
     // console.log('This is working' + Math.random());
+  }
+
+  findUser(): void {
+    this.userService.findUser(this.username).subscribe(value => {
+      this.userExists = true;
+    }, error => {
+      this.userExists = false;
+    });
   }
 }
