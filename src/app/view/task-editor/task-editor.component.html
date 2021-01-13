@@ -1,5 +1,5 @@
 <div class="container">
-  <input type="text">
-  <button>Add task</button>
-  <span>Cancel</span>
+  <input #txt #txtTask="ngModel" required minlength="1" ngModel type="text">
+  <button [disabled]="txtTask.invalid">Add task</button>
+  <span (click)="cancel.emit('')">Cancel</span>
 </div>

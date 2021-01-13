@@ -1,6 +1,6 @@
 <div class="container">
   <h1>
-    <img id="logo" src="assets/logo.png" alt="Logo">
+    <img alt="Logo" id="logo" src="assets/logo.png">
     To-do List
     <a (click)="signOut()">Sign Out</a>
   </h1>
@@ -8,7 +8,7 @@
     <ng-container *ngFor="let task of taskList">
       <app-task-item *ngIf="task.status === Status.NOT_COMPLETED" [task]="task"></app-task-item>
     </ng-container>
-    <div class="task lbl-add-task">
+    <div class="task lbl-add-task" *ngIf="!visibleTaskEditor" (click)="visibleTaskEditor=true">
   <span>
     <svg height="13" width="13">
       <path d="M6 6V.5a.5.5 0 0 1 1 0V6h5.5a.5.5 0 1 1 0 1H7v5.5a.5.5 0 1 1-1 0V7H.5a.5.5 0 0 1 0-1H6z"
@@ -18,6 +18,7 @@
   </span>
       Add Task
     </div>
+    <app-task-editor *ngIf="visibleTaskEditor" (cancel)="visibleTaskEditor = false"></app-task-editor>
   </section>
 
   <h3 class="section">Completed Tasks</h3>

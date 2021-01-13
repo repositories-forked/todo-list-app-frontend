@@ -14,6 +14,7 @@ export class MainComponent implements OnInit {
 
   taskList: Array<Task> = [];
   Status = Status;
+  visibleTaskEditor = false;
 
   constructor(public taskService: TaskService, private router: Router) {
 
