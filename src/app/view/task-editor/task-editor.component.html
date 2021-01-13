@@ -1,5 +1,5 @@
-<div class="container">
-  <input #txt #txtTask="ngModel" required minlength="1" ngModel type="text">
-  <button [disabled]="txtTask.invalid">Add task</button>
+<form class="container" (ngSubmit)="update.emit(txt.value)">
+  <input (input)="taskTextChange.emit(taskText)" name="txt-task" #txt #txtTask="ngModel" required minlength="1" [(ngModel)]="taskText" type="text">
+  <button [disabled]="txtTask.invalid">{{newTask? 'Add Task': 'Save'}}</button>
   <span (click)="cancel.emit('')">Cancel</span>
-</div>
+</form>

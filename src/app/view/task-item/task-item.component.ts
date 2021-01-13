@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, EventEmitter, Output} from '@angular/core';
 import {Task} from '../../model/task';
 import {Status} from '../../util/status.enum';
 
@@ -12,6 +12,8 @@ export class TaskItemComponent implements OnInit {
   Status = Status;
   @Input()
   task!: Task;
+  @Output()
+  edit = new EventEmitter();
 
   constructor() {
   }
@@ -19,4 +21,8 @@ export class TaskItemComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  editTask(eventData: MouseEvent): void {
+    this.edit.emit(this.task);
+    eventData.stopImmediatePropagation();
+  }
 }

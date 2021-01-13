@@ -5,7 +5,7 @@
         fill="currentColor"></path></svg>
     </span>{{task.text}}
   <div class="options">
-      <span *ngIf="(task.status === Status.NOT_COMPLETED)" class="option-item edit">
+      <span (click)="editTask($event)" *ngIf="(task.status === Status.NOT_COMPLETED)" class="option-item edit">
         <svg height="24" width="24"><g fill="none" fill-rule="evenodd"><path
           d="M9.5 19h10a.5.5 0 110 1h-10a.5.5 0 110-1z"
           fill="currentColor"></path><path

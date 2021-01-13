@@ -30,6 +30,7 @@ export class SignInComponent implements OnInit {
     this.userService.authenticate(this.username, this.password)
       .subscribe(token => {
         sessionStorage.setItem(`token`, token);
+        sessionStorage.setItem('uname', this.username);
         this.router.navigateByUrl('/main');
       }, error => {
         this.snackBar.open('Invalid username and password', 'Dismiss');

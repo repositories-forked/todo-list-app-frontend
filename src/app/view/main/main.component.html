@@ -6,7 +6,7 @@
   </h1>
   <section>
     <ng-container *ngFor="let task of taskList">
-      <app-task-item *ngIf="task.status === Status.NOT_COMPLETED" [task]="task"></app-task-item>
+      <app-task-item (edit)="editTask($event)" *ngIf="task.status === Status.NOT_COMPLETED" [task]="task"></app-task-item>
     </ng-container>
     <div class="task lbl-add-task" *ngIf="!visibleTaskEditor" (click)="visibleTaskEditor=true">
   <span>
@@ -18,7 +18,7 @@
   </span>
       Add Task
     </div>
-    <app-task-editor *ngIf="visibleTaskEditor" (cancel)="visibleTaskEditor = false"></app-task-editor>
+    <app-task-editor [(taskText)]="(currentTask == null) ? '': currentTask.text" *ngIf="visibleTaskEditor" [newTask]="currentTask == null" (update)="addNewTask($event)" (cancel)="visibleTaskEditor = false; currentTask=null"></app-task-editor>
   </section>
 
   <h3 class="section">Completed Tasks</h3>
