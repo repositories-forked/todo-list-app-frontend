@@ -6,9 +6,10 @@
   </h1>
   <section>
     <ng-container *ngFor="let task of taskList">
-      <app-task-item (edit)="editTask($event)" *ngIf="task.status === Status.NOT_COMPLETED" [task]="task"></app-task-item>
+      <app-task-item (edit)="editTask($event)" *ngIf="task.status === Status.NOT_COMPLETED"
+                     [task]="task"></app-task-item>
     </ng-container>
-    <div class="task lbl-add-task" *ngIf="!visibleTaskEditor" (click)="visibleTaskEditor=true">
+    <div (click)="visibleTaskEditor=true" *ngIf="!visibleTaskEditor" class="task lbl-add-task">
   <span>
     <svg height="13" width="13">
       <path d="M6 6V.5a.5.5 0 0 1 1 0V6h5.5a.5.5 0 1 1 0 1H7v5.5a.5.5 0 1 1-1 0V7H.5a.5.5 0 0 1 0-1H6z"
@@ -18,7 +19,9 @@
   </span>
       Add Task
     </div>
-    <app-task-editor [(taskText)]="(currentTask == null) ? '': currentTask.text" *ngIf="visibleTaskEditor" [newTask]="currentTask == null" (update)="addNewTask($event)" (cancel)="visibleTaskEditor = false; currentTask=null"></app-task-editor>
+    <app-task-editor (cancel)="visibleTaskEditor = false; currentTask=null" (update)="addNewTask($event)"
+                     *ngIf="visibleTaskEditor" [(taskText)]="(currentTask == null) ? '': currentTask.text"
+                     [newTask]="currentTask == null"></app-task-editor>
   </section>
 
   <h3 class="section">Completed Tasks</h3>
